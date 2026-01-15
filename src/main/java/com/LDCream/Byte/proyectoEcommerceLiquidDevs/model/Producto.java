@@ -1,11 +1,8 @@
 package com.LDCream.Byte.proyectoEcommerceLiquidDevs.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
 
 @Entity
 @Table(name = "producto")
@@ -29,18 +26,14 @@ public class Producto {
     private LocalDateTime fechaCreacion;
 
     private Boolean estado;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_categoria")
-    private Categoria categoria;
 
 
-    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("producto")
-    private List<Comentario> comentarios;
+    //    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
+    //    private List<DetalleOrden> detalles;
 
     public Producto() {
-        this.fechaCreacion = LocalDateTime.now();
     }
+
 
     public Integer getIdProducto() {
         return idProducto;
@@ -84,18 +77,6 @@ public class Producto {
 
     public String getCategoria() {
         return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
-    }
-
-    public List<Comentario> getComentarios() {
-        return comentarios;
-    }
-
-    public void setComentarios(List<Comentario> comentarios) {
-        this.comentarios = comentarios;
     }
 
     public void setCategoria(String categoria) {
