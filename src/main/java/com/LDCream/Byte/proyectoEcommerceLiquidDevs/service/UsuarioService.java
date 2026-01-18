@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class UsuarioService implements IusuarioService{
     private final IusuarioRepository usuarioRepository;
@@ -19,6 +20,7 @@ public class UsuarioService implements IusuarioService{
     public List<Usuario> buscarTodos() {
         return usuarioRepository.findAll();
     }
+
     //@Transactional(readOnly = true)
     @Override
     public Optional<Usuario> buscarPorId(Long id) {
@@ -34,7 +36,7 @@ public class UsuarioService implements IusuarioService{
 
     @Override
     public void eliminarPorId(Long id) {
-
+        usuarioRepository.deleteById(id);
     }
 
     @Override
@@ -43,7 +45,9 @@ public class UsuarioService implements IusuarioService{
         if (usuarioExistente != null) {
             usuarioExistente.setNombre(usuarioActualizado.getNombre());
             usuarioExistente.setApellido(usuarioActualizado.getApellido());
-
+            usuarioExistente.setEmail(usuarioActualizado.getEmail());
+            usuarioExistente.setTelefono(usuarioActualizado.getTelefono());
+            usuarioExistente.setPassword_hash(usuarioActualizado.getPassword_hash());
 
         }
     }

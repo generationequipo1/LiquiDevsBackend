@@ -2,6 +2,8 @@ package com.LDCream.Byte.proyectoEcommerceLiquidDevs.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "usuario")
 public class Usuario {
@@ -16,11 +18,10 @@ public class Usuario {
 
     public Usuario() {
     }
-    // @OneToMany
-    //private List<Pedidos> pedido;
+    @OneToMany
+    private List<Pedido> pedido;
 
-    public Usuario(Long id, String nombre, String apellido, String email, int telefono, String password_hash) {
-        this.id = id;
+    public Usuario( String nombre, String apellido, String email, int telefono, String password_hash) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;

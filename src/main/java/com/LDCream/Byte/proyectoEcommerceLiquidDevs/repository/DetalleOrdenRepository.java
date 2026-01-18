@@ -1,5 +1,51 @@
 package com.LDCream.Byte.proyectoEcommerceLiquidDevs.repository;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Este codigo esta completamente copiado de AI y no tiene la estructura correcta, es una interfaz o es una clase cual es el proposito de este codigo?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import com.LDCream.Byte.proyectoEcommerceLiquidDevs.model.DetalleOrden;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;

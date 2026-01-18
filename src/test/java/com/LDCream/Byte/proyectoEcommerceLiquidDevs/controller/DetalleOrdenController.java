@@ -5,7 +5,7 @@ import com.LDCream.Byte.proyectoEcommerceLiquidDevs.model.Pedido;
 import com.LDCream.Byte.proyectoEcommerceLiquidDevs.model.Producto;
 import com.LDCream.Byte.proyectoEcommerceLiquidDevs.repository.DetalleOrdenRepository;
 import com.LDCream.Byte.proyectoEcommerceLiquidDevs.repository.IproductoRepository;
-import com.LDCream.Byte.proyectoEcommerceLiquidDevs.repository.PedidoRepository;
+import com.LDCream.Byte.proyectoEcommerceLiquidDevs.repository.IpedidoRepository;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMin;
@@ -22,11 +22,11 @@ import java.util.List;
 public class DetalleOrdenController {
 
     private final DetalleOrdenRepository detalleRepo;
-    private final PedidoRepository pedidoRepo;
+    private final IpedidoRepository pedidoRepo;
     private final IproductoRepository productoRepo;
 
     public DetalleOrdenController(DetalleOrdenRepository detalleRepo,
-                                  PedidoRepository pedidoRepo,
+                                  IpedidoRepository pedidoRepo,
                                   IproductoRepository productoRepo) {
         this.detalleRepo = detalleRepo;
         this.pedidoRepo = pedidoRepo;
