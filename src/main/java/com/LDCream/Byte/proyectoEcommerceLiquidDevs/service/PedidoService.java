@@ -63,6 +63,13 @@ public class PedidoService implements IpedidoService{
 
     @Override
     public double validarDescuento(DetalleOrden detalleOrden) {
+
+        List<DetalleOrden> listaDetalles = detalleOrdenRepository.findAll();
+        List<DetalleOrden> listaDetallesActualizada;
+
+        for(int i = 0; i < listaDetalles.size(); i++){
+
+        }
         double porcentajeDescuento = 0.10;
         double precioProducto = detalleOrden.getProducto().getPrecio();
         int cantidadProducto = detalleOrden.getCantidad();
@@ -74,12 +81,13 @@ public class PedidoService implements IpedidoService{
     }
 
     @Override
-    public double validarSubtotal(double precio, int cantidad) {
+    public double validarSubtotal(DetalleOrden detalleOrden) {
+        pedidoRepository.findAll();
         return 0;
     }
 
     @Override
-    public double validarTotal(double total, double descuento) {
+    public double validarTotal(DetalleOrden detalleOrden) {
         return 0;
     }
 }
