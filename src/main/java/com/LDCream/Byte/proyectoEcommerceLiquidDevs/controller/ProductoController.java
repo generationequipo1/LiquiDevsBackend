@@ -22,7 +22,7 @@ public class ProductoController {
     }
 
     @GetMapping("/{id}")
-    public Producto obtenerProducto(@PathVariable Integer id) {
+    public Producto obtenerProducto(@PathVariable Long id) {
         return productoService.buscarProductoPorId(id);
     }
 
@@ -32,7 +32,7 @@ public class ProductoController {
     }
 
     @DeleteMapping("/{id}")
-    public void eliminarProducto(@PathVariable Integer id) {
+    public void eliminarProducto(@PathVariable Long id) {
         productoService.eliminarProducto(id);
     }
 }

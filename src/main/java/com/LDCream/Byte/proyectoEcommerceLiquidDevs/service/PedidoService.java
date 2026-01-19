@@ -3,6 +3,7 @@ package com.LDCream.Byte.proyectoEcommerceLiquidDevs.service;
 import com.LDCream.Byte.proyectoEcommerceLiquidDevs.model.Pedido;
 import com.LDCream.Byte.proyectoEcommerceLiquidDevs.model.Producto;
 import com.LDCream.Byte.proyectoEcommerceLiquidDevs.repository.IpedidoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -13,6 +14,7 @@ public class PedidoService implements IpedidoService{
 
     private final IpedidoRepository pedidoRepository;
 
+    @Autowired
     public PedidoService(IpedidoRepository pedidoRepository) {
         this.pedidoRepository = pedidoRepository;
     }

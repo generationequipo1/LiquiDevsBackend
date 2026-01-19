@@ -24,8 +24,10 @@ public class ProductoService implements IproductoService {
         return productoRepository.findAll();
     }
 
+
+
     @Override
-    public Producto buscarProductoPorId(Integer id) {
+    public Producto buscarProductoPorId(Long id) {
         return productoRepository.findById(id).orElse(null);
     }
 
@@ -37,7 +39,7 @@ public class ProductoService implements IproductoService {
     }
 
     @Override
-    public void eliminarProducto(Integer id) {
+    public void eliminarProducto(Long id) {
         productoRepository.deleteById(id);
     }
 }
