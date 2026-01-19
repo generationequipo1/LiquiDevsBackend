@@ -42,4 +42,9 @@ public class ProductoService implements IproductoService {
     public void eliminarProducto(Long id) {
         productoRepository.deleteById(id);
     }
+
+    @Override
+    public Producto actualizarStock(Integer id, Integer cantidad) {
+        return null;
+    }
 }

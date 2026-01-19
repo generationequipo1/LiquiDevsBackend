@@ -7,7 +7,7 @@ import java.util.List;
 public interface IproductoService {
 
     List<Producto> listarProductos();
-    Producto buscarProductoPorId(Long id);
+    Producto buscarProductoPorId(Integer id);
     Producto guardarProducto(Producto producto);
-    void eliminarProducto(Long id);
+    void eliminarProducto(Integer id);
 }
