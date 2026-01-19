@@ -53,7 +53,7 @@ public class PedidoService implements IpedidoService{
 
     @Override
     public double validarDescuento(double descuento, double precio) {
-        Producto descuentoPedido =
+
         return 0;
     }
 
