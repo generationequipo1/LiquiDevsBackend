@@ -12,20 +12,20 @@ import java.util.Optional;
 public class DetalleOrdenService implements IdetalleOrdenService{
 
     private final IdetalleOrdenRepository detalleOrdenRepository;
-
     @Autowired
     public DetalleOrdenService(IdetalleOrdenRepository detalleOrdenRepository) {
         this.detalleOrdenRepository = detalleOrdenRepository;
     }
 
+
     @Override
     public List<DetalleOrden> detalleOrdenes() {
-        return this.detalleOrdenRepository.findAll();
+        return detalleOrdenRepository.findAll();
     }
 
     @Override
     public Optional<DetalleOrden> buscarPorId(Long id) {
-        DetalleOrden detalleOrden = detalleOrdenRepository.findById(id).orElseThrow(null);
+        DetalleOrden detalleOrden = detalleOrdenRepository.findById(id).orElseThrow();
         return Optional.of(detalleOrden);
     }
 

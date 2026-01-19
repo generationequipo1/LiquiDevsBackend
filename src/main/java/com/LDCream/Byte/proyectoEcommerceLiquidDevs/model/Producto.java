@@ -33,7 +33,11 @@ public class Producto {
     private LocalDateTime fechaCreacion;
 
     private Boolean estado;
-    public Producto() {}
+
+
+    public Producto() {
+
+    }
 
     public Long getIdProducto() {
         return idProducto;

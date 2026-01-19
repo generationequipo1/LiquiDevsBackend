@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,29 +18,33 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPedido;
+
     @CreationTimestamp
     @Column(name = "fecha_creacion",updatable = false, nullable = false)
     private LocalDateTime fechaCreacion;
-    @Column(name = "descuento",nullable = false)
+
+    @Column(name = "descuento",nullable = false )
     private double descuentos;
+    @Column(name = "subtotal",nullable = false)
     private double subtotal;
+    @Column(name = "total",nullable = false)
     private double valorTotal;
 
 
     @ManyToOne
-    @JsonBackReference //Esta anotacion va en la entidad que recibe
+    @JsonBackReference //Esta anotacion va en la entidad que recibe, evita bucles infinitos
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
-    @OneToMany
-    private List<DetalleOrden> detallesOrdenes;
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    private List<DetalleOrden> detallesOrdenes = new ArrayList<>();
 
     public Pedido(double descuentos, double subtotal, double valorTotal) {
-
         this.descuentos = descuentos;
         this.subtotal = subtotal;
         this.valorTotal = valorTotal;
     }
+
     public LocalDateTime getFechaCreacion() {
         return fechaCreacion;
     }

@@ -9,6 +9,7 @@ import com.LDCream.Byte.proyectoEcommerceLiquidDevs.repository.IproductoReposito
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -17,12 +18,10 @@ public class PedidoService implements IpedidoService{
 
     private final IpedidoRepository pedidoRepository;
 
-    private final IdetalleOrdenRepository detalleOrdenRepository;
-
     @Autowired
-    public PedidoService(IpedidoRepository pedidoRepository,  IdetalleOrdenRepository detalleOrdenRepository) {
+    public PedidoService(IpedidoRepository pedidoRepository) {
         this.pedidoRepository = pedidoRepository;
-        this.detalleOrdenRepository = detalleOrdenRepository;
+
     }
 
     @Override
@@ -62,32 +61,33 @@ public class PedidoService implements IpedidoService{
 
 
     @Override
-    public double validarDescuento(DetalleOrden detalleOrden) {
-
-        List<DetalleOrden> listaDetalles = detalleOrdenRepository.findAll();
-        List<DetalleOrden> listaDetallesActualizada;
-
-        for(int i = 0; i < listaDetalles.size(); i++){
-
-        }
-        double porcentajeDescuento = 0.10;
-        double precioProducto = detalleOrden.getProducto().getPrecio();
-        int cantidadProducto = detalleOrden.getCantidad();
+    public double validarDescuento(Pedido pedido) {
+        double subtotal = pedido.getSubtotal();
+        double descuento = 0.15;
         double valorDescuento = 0;
-         if(precioProducto * cantidadProducto > 50000){
-            valorDescuento =  (precioProducto * cantidadProducto) * porcentajeDescuento;
-         }
-        return valorDescuento;
+
+        if(subtotal >= 50000){
+            valorDescuento =  subtotal * descuento;
+        }
+       return valorDescuento;
     }
 
     @Override
-    public double validarSubtotal(DetalleOrden detalleOrden) {
-        pedidoRepository.findAll();
-        return 0;
+    public double validarSubtotal(Pedido pedido) {
+        double subtotal = 0;
+        int cantidad;
+        double precio;
+
+        for (DetalleOrden iteradorDetalle : pedido.getDetallesOrdenes()){
+                precio = iteradorDetalle.getProducto().getPrecio();
+                cantidad = iteradorDetalle.getCantidad();
+                subtotal = precio * cantidad;
+        }
+        return subtotal;
     }
 
     @Override
-    public double validarTotal(DetalleOrden detalleOrden) {
-        return 0;
+    public double validarTotal(Pedido pedido) {
+        return pedido.getSubtotal() - pedido.getDescuentos();
     }
 }

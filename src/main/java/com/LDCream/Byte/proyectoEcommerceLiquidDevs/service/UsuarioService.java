@@ -3,6 +3,7 @@ package com.LDCream.Byte.proyectoEcommerceLiquidDevs.service;
 import com.LDCream.Byte.proyectoEcommerceLiquidDevs.model.Usuario;
 import com.LDCream.Byte.proyectoEcommerceLiquidDevs.repository.IusuarioRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Optional;
 public class UsuarioService implements IusuarioService{
     private final IusuarioRepository usuarioRepository;
 
+    @Autowired
     public UsuarioService(IusuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }

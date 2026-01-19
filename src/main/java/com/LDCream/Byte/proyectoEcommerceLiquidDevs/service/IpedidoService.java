@@ -14,8 +14,8 @@ public interface IpedidoService  {
     Optional<Pedido> buscarPorId(Long id);
     void eliminarPorId(Long id);
     void editarPedido(Long id, Pedido pedidoActualizado);
-    double validarDescuento(DetalleOrden detalleOrden);
-    double validarSubtotal(DetalleOrden detalleOrden);
-    double validarTotal(DetalleOrden detalleOrden);
+    double validarDescuento(Pedido pedido);
+    double validarSubtotal(Pedido pedido);
+    double validarTotal(Pedido pedido);
 
 }

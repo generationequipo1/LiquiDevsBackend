@@ -20,6 +20,8 @@ public class DetalleOrden {
     @JoinColumn(name = "id_producto")
     private Producto producto;
 
+
+    //"Muchos objetos de la clase actual están asociados a un único objeto de la clase Pedido".
     @ManyToOne
     @JoinColumn(name = "id_pedido")
     private Pedido pedido;

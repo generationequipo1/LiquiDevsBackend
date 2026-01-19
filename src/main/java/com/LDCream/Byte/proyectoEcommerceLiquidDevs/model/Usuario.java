@@ -17,8 +17,11 @@ public class Usuario {
     String password_hash;
 
     public Usuario() {
+
     }
-    @OneToMany
+
+    @OneToMany(mappedBy = "usuario")
+    //@JoinColumn(name = "id_pedido")
     private List<Pedido> pedido;
 
     public Usuario( String nombre, String apellido, String email, int telefono, String password_hash) {
