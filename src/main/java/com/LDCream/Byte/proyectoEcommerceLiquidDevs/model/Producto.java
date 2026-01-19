@@ -22,7 +22,7 @@ public class Producto {
 
     private String nombre;
     private String descripcion;
-    private BigDecimal precio;
+    private double precio;
     private Integer stock;
     private String categoria;
 
@@ -59,11 +59,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public BigDecimal getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(BigDecimal precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 

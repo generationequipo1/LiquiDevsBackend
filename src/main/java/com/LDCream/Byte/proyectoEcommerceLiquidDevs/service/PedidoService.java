@@ -1,8 +1,11 @@
 package com.LDCream.Byte.proyectoEcommerceLiquidDevs.service;
 
+import com.LDCream.Byte.proyectoEcommerceLiquidDevs.model.DetalleOrden;
 import com.LDCream.Byte.proyectoEcommerceLiquidDevs.model.Pedido;
 import com.LDCream.Byte.proyectoEcommerceLiquidDevs.model.Producto;
+import com.LDCream.Byte.proyectoEcommerceLiquidDevs.repository.IdetalleOrdenRepository;
 import com.LDCream.Byte.proyectoEcommerceLiquidDevs.repository.IpedidoRepository;
+import com.LDCream.Byte.proyectoEcommerceLiquidDevs.repository.IproductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +17,12 @@ public class PedidoService implements IpedidoService{
 
     private final IpedidoRepository pedidoRepository;
 
+    private final IdetalleOrdenRepository detalleOrdenRepository;
+
     @Autowired
-    public PedidoService(IpedidoRepository pedidoRepository) {
+    public PedidoService(IpedidoRepository pedidoRepository,  IdetalleOrdenRepository detalleOrdenRepository) {
         this.pedidoRepository = pedidoRepository;
+        this.detalleOrdenRepository = detalleOrdenRepository;
     }
 
     @Override
@@ -53,10 +59,18 @@ public class PedidoService implements IpedidoService{
         }
     }
 
-    @Override
-    public double validarDescuento(double descuento, double precio) {
 
-        return 0;
+
+    @Override
+    public double validarDescuento(DetalleOrden detalleOrden) {
+        double porcentajeDescuento = 0.10;
+        double precioProducto = detalleOrden.getProducto().getPrecio();
+        int cantidadProducto = detalleOrden.getCantidad();
+        double valorDescuento = 0;
+         if(precioProducto * cantidadProducto > 50000){
+            valorDescuento =  (precioProducto * cantidadProducto) * porcentajeDescuento;
+         }
+        return valorDescuento;
     }
 
     @Override

@@ -16,7 +16,7 @@ public class DetalleOrden {
 
     private int cantidad;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "id_producto")
     private Producto producto;
 

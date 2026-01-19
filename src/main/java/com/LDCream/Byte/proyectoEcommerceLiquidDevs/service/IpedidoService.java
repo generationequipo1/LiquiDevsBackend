@@ -1,6 +1,8 @@
 package com.LDCream.Byte.proyectoEcommerceLiquidDevs.service;
 
+import com.LDCream.Byte.proyectoEcommerceLiquidDevs.model.DetalleOrden;
 import com.LDCream.Byte.proyectoEcommerceLiquidDevs.model.Pedido;
+import com.LDCream.Byte.proyectoEcommerceLiquidDevs.model.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -12,7 +14,7 @@ public interface IpedidoService  {
     Optional<Pedido> buscarPorId(Long id);
     void eliminarPorId(Long id);
     void editarPedido(Long id, Pedido pedidoActualizado);
-    double validarDescuento(double descuento, double precio);
+    double validarDescuento(DetalleOrden detalleOrden);
     double validarSubtotal(double precio, int cantidad);
     double validarTotal(double total, double descuento);
 
