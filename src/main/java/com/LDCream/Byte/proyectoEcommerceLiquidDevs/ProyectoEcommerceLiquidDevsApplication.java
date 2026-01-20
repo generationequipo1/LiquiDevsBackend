@@ -9,5 +9,4 @@ public class ProyectoEcommerceLiquidDevsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoEcommerceLiquidDevsApplication.class, args);
 	}
-
 }

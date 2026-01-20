@@ -25,6 +25,7 @@ private final IusuarioService usuarioService;
     }
     @PostMapping("/crear")
     public Usuario crearUsuario(@RequestBody Usuario usuario){
+
          return usuarioService.guardar(usuario);
     }
 
