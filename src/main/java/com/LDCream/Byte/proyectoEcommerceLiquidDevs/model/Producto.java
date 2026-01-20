@@ -18,11 +18,11 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto")
-    private Long idProducto;
+    private Integer idProducto;
 
     private String nombre;
     private String descripcion;
-    private double precio;
+    private BigDecimal precio;
     private Integer stock;
     private String categoria;
 
@@ -33,17 +33,13 @@ public class Producto {
     private LocalDateTime fechaCreacion;
 
     private Boolean estado;
+    public Producto() {}
 
-
-    public Producto() {
-
-    }
-
-    public Long getIdProducto() {
+    public Integer getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(Long idProducto) {
+    public void setIdProducto(Integer idProducto) {
         this.idProducto = idProducto;
     }
 
@@ -63,11 +59,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public double getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
 
