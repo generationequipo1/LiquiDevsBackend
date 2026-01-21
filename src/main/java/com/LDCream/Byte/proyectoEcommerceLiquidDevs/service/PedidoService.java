@@ -9,6 +9,7 @@ import com.LDCream.Byte.proyectoEcommerceLiquidDevs.repository.IproductoReposito
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -76,12 +77,11 @@ public class PedidoService implements IpedidoService{
     public double validarSubtotal(Pedido pedido) {
         double subtotal = 0;
         int cantidad;
-        double precio;
+        BigDecimal precio;
 
         for (DetalleOrden iteradorDetalle : pedido.getDetallesOrdenes()){
                 precio = iteradorDetalle.getProducto().getPrecio();
                 cantidad = iteradorDetalle.getCantidad();
-                subtotal = precio * cantidad;
         }
         return subtotal;
     }
