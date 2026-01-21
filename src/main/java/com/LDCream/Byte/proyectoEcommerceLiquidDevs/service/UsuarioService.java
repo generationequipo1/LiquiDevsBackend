@@ -53,4 +53,14 @@ public class UsuarioService implements IusuarioService{
 
         }
     }
+
+    @Override
+    public Optional<Usuario> buscarPorEmail(String email) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean existeEmail(String email) {
+        return false;
+    }
 }
