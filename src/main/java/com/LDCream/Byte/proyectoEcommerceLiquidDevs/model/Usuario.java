@@ -3,6 +3,7 @@ package com.LDCream.Byte.proyectoEcommerceLiquidDevs.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -10,33 +11,49 @@ import java.util.List;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String nombre;
-    String apellido;
+    private Long id;
+    private String nombre;
+    private String apellido;
     @Column(unique = true) //se recomienda utilizar emails repetidas
-    String email;
-    String telefono;
+    private String email;
+    private String telefono;
 
     @JsonIgnore
-    String password_hash;
+    @Column(name = "password_hash", nullable = false)
+    private String password_hash;
 
-    public Usuario() {
+    @Column(name = "fecha_registro")
+    private LocalDateTime fechaRegistro;
 
-    }
+    @Column(nullable = false)
+    private Boolean activo = true;
 
     @OneToMany(mappedBy = "usuario")
-    //@JoinColumn(name = "id_pedido")
+    @JsonIgnore // Evitar recursión infinita
     private List<Pedido> pedido;
-
+    //
+    public Usuario() {}
+    // constructor con parametros
     public Usuario( String nombre, String apellido, String email, String telefono, String password_hash) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.telefono = telefono;
         this.password_hash = password_hash;
+        this.fechaRegistro = LocalDateTime.now();
+        this.activo = true;
     }
-
-
+    // metodo de ciclo de vida y persistencia
+    @PrePersist
+    protected void onCreate(){
+        if (fechaRegistro == null){
+            fechaRegistro = LocalDateTime.now();
+        }
+        if (activo == null) {
+            activo=true;
+        }
+    }
+    //getter y setter
     public Long getId() {
         return id;
     }
@@ -83,6 +100,39 @@ public class Usuario {
 
     public void setPassword_hash(String password_hash) {
         this.password_hash = password_hash;
+    }
+    public LocalDateTime getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(LocalDateTime fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedido;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedido = pedidos;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 
 
