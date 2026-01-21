@@ -1,5 +1,6 @@
 package com.LDCream.Byte.proyectoEcommerceLiquidDevs.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -12,8 +13,11 @@ public class Usuario {
     Long id;
     String nombre;
     String apellido;
+    @Column(unique = true) //se recomienda utilizar emails repetidas
     String email;
-    int telefono;
+    String telefono;
+
+    @JsonIgnore
     String password_hash;
 
     public Usuario() {
@@ -24,7 +28,7 @@ public class Usuario {
     //@JoinColumn(name = "id_pedido")
     private List<Pedido> pedido;
 
-    public Usuario( String nombre, String apellido, String email, int telefono, String password_hash) {
+    public Usuario( String nombre, String apellido, String email, String telefono, String password_hash) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
@@ -65,11 +69,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -80,8 +84,6 @@ public class Usuario {
     public void setPassword_hash(String password_hash) {
         this.password_hash = password_hash;
     }
-
-
 
 
 }
