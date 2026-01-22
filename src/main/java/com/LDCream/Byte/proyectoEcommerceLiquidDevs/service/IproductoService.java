@@ -12,7 +12,7 @@ public interface IproductoService {
     Producto save(Producto producto);
     void deleteById(Long id);
     List<Producto> findByNombreContaining(String nombre);
-
+}
     /*List<Producto> listarProductos();
     Producto buscarProductoPorId(Integer id);
     Producto buscarProductoPorId(Long id);
@@ -21,5 +21,5 @@ public interface IproductoService {
     void eliminarProducto(Long id);
     Producto actualizarStock(Integer id, Integer cantidad);*/
 
-}
+
 
