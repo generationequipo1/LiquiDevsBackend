@@ -1,4 +1,4 @@
-package com.LDCream.Byte.proyectoEcommerceLiquidDevs.config;
+/*package com.LDCream.Byte.proyectoEcommerceLiquidDevs.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +9,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.Arrays;
 
 @Configuration
-public class CorsConfig {
+public class Config {
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
@@ -28,4 +28,4 @@ public class CorsConfig {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
-}
+}*/

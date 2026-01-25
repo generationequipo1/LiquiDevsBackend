@@ -25,6 +25,8 @@ public class SecurityConfig {
                         .requestMatchers("/productos/**").permitAll()
                         .requestMatchers("/pedidos/**").permitAll()
                         .requestMatchers("/usuarios/**").permitAll()
+                        .requestMatchers("/api/pagos/**").permitAll()
+
                         .anyRequest().authenticated()
                 );
 
