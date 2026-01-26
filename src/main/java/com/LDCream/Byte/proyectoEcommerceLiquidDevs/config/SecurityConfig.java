@@ -15,7 +15,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+    /*@Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
@@ -27,10 +27,23 @@ public class SecurityConfig {
                         .requestMatchers("/usuarios/**").permitAll()
                         .requestMatchers("/api/pagos/**").permitAll()
 
+
                         .anyRequest().authenticated()
                 );
 
         return http.build();
+    }*/
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(csrf -> csrf.disable())
+                .cors(cors -> cors.configure(http))
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().permitAll()
+                );
+
+        return http.build();
     }
+
 }
 
