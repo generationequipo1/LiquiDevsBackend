@@ -18,12 +18,10 @@ import java.util.Optional;
 @CrossOrigin(origins = "*")
 
 public class ProductoController {
-
     private final IproductoService productoService;
 
     @Autowired
     public ProductoController(IproductoService productoService) {
-
         this.productoService = productoService;
     }
 
